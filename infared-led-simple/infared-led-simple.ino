@@ -9,14 +9,15 @@ decode_results results;
 void setup() {
   Serial.begin(9600);
   irrecv.enableIRIn();
+  pinMode(SP_PIN, OUTPUT);
 }
 
 void loop() {
   if(irrecv.decode(&results)){
     Serial.println(results.value);
-    if(results.value == 00000000){
+    if(results.value == 2105400865){
       speak1();
-    }else if(results.value == 111111){
+    }else if(results.value == 2105360065){
       speak2();
     }
     irrecv.resume();
